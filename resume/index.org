@@ -7,8 +7,8 @@
 ***** 生卒： r"1988-2[0,1]\d{3}"
 ***** 电话：18800190915
 ***** Email：felixlisp@gmail.com
-***** 个人博客：http://www.felixblog.net
-***** CSDN博客：http://blog.csdn.net/lrq1988 (后台语言：clojure)
+***** 个人博客：http://www.felixblog.net (后台语言：clojure)
+***** CSDN博客：http://blog.csdn.net/lrq1988 
 ***** 标签：未婚、非党员、重度宅、闷骚、读书、长跑技能冷却中
 
 **** *教育经历*
