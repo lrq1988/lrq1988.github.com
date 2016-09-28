@@ -15,6 +15,9 @@
     <li>
       <button onclick="change2();">点我，window.location.href</button>
     </li>
+    <li>
+      <button onclick="change3();">点我，打开设置</button>
+    </li>
   </ul>
 
 </body>
@@ -35,6 +38,9 @@
     }
     function change2() {
        window.location.href = "page://videoplayer.yunos.com/videoplayer -e Redirection -d  \"{\"_uri\":\"http://vodcdn.video.taobao.com/oss/ali-video/3536edc0480d4eacb2a3718a452702ce/1453047226/video.mp4\", \"_title\":\"test\"}\"";
+    }
+    function change3() {
+       window.location.href = "page://settings.yunos.com/settings -e Redirection -d ali_key_settings_wlan";
     }
 
   </script>
