@@ -40,13 +40,7 @@
        window.location.href = "page://videoplayer.yunos.com/videoplayer -e Redirection -d  \"{\"_uri\":\"http://vodcdn.video.taobao.com/oss/ali-video/3536edc0480d4eacb2a3718a452702ce/1453047226/video.mp4\", \"_title\":\"test\"}\"";
     }
     function goToSettings() {
-        var errUrl = document.getElementById("err_url").innerText;
-        var errCode = document.getElementById("err_code").innerText;
-        var errDesc = document.getElementById("err_desc").innerText;
-        console.log("goToSettings error_url: " + errUrl + ", errCode: " + errCode + ", errDesc: " + errDesc);
-        if (typeof weblauncherJsObject === "object" && weblauncherJsObject.onErrorPageSettings) {
-            weblauncherJsObject.onErrorPageSettings(errUrl, errCode, errDesc);
-        }
+ 
         window.location.href = "page://settings.yunos.com/settings -e Redirection -d ali_key_settings_wlan";
     }
   </script>
