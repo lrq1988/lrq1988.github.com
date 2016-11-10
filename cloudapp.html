@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>应用下载</title>
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css">
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul,
+            ol {
+                list-style: none;
+            }
+           a{
+            text-decoration:none;
+            color:#65c5fd;
+           }
+            body {
+                width: 100%;
+                background: #f0eeee;
+            }
+
+            body .header {
+                width: 100%;
+                height: 44px;
+                text-align: center;
+                line-height: 44px;
+                background: -moz-linear-gradient(left, #1fdaff 0%, #16a5f9 100%);
+                background: -webkit-gradient(linear, left, right, color-stop(0%, #1fdaff), color-stop(100%, #16a5f9));
+                background: -webkit-linear-gradient(left, #1fdaff 0%, #16a5f9 100%);
+                background: -o-linear-gradient(left, #1fdaff 0%, #16a5f9 100%);
+                background: -ms-linear-gradient(left, #1fdaff 0%, #16a5f9 100%);
+                background: linear-gradient(to right, #1fdaff 0%, #16a5f9 100%);
+                color: #d2f0fe;
+            }
+
+            body .appname {
+                height: auto;
+                margin: 0 auto;
+                overflow: auto;
+                zoom: 1;
+                background: #f0eeee;
+                padding-top: 12px;
+            }
+
+            body .appname> li:nth-child(3n+1) {
+                margin-left: -6px;
+            }
+
+            @media all and (min-width: 700px) {
+                body .appname> li:nth-child(3n+1) {
+                    margin-left: 0;
+                }
+            }
+
+            body .appname> li {
+                height: 167px;
+                width: 33.3%;
+                float: left;
+                box-sizing: border-box;
+                padding-left: 12px;
+                background: #f0eeee;
+            }
+
+            @media all and (min-width: 600px) {
+                body .appname> li {
+                    width: 25%;
+                }
+            }
+
+            @media all and (min-width: 800px) {
+                body .appname> li {
+                    width: 200px;
+                }
+            }
+
+            body .appname> li> div.pic {
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+                padding-top: 18px;
+                background: #fff;
+                box-sizing: border-box;
+            }
+
+            body .appname> li> div.pic img {
+                width: 64px;
+                height: 64px;
+                cursor: pointer;
+            }
+
+            body .appname> li> div.des {
+                background: #fff;
+                height: 55px;
+            }
+
+            body .appname> li> div.des> p {
+                font-size: 12px;
+                color: #333;
+                text-align: center;
+            }
+
+            body .appname> li> div.des> span {
+                display: block;
+                height:20px;
+                width:46px;
+                border-radius: 4px;
+                background: #fff;
+                margin: 10px auto 0;
+                border: 1px solid #65c5fd;
+                color: #65c5fd;
+                font-size: 12px;
+                line-height: 20px;
+
+                text-align: center;
+                cursor: pointer;
+            }
+
+            body> .down-alert {
+                display: none;
+                background: rgba(0, 0, 0, 0.2);
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                color: #333;
+            }
+
+            body> .down-alert> .down-content {
+                height: 100px;
+                width: 250px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -125px;
+                margin-top: -50px;
+                background: #fff;
+                border-radius: 5px;
+            }
+
+            body> .down-alert> .down-content> p {
+                margin: 20px auto;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            body> .down-alert> .down-content> span {
+                display: block;
+                text-align: center;
+                font-size: 14px;
+                padding-top: 10px;
+                cursor: pointer;
+            }
+
+            body> .piccontent-bg {
+                display: none;
+                background: rgba(0, 0, 0, 0.2);
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            body> .piccontent-bg> .piccontent {
+                width: 90%;
+                height: 80%;
+                background: #fff;
+                position: fixed;
+                left: 5%;
+                top: 10%;
+                border-radius: 5px;
+                display: flex;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-flex-direction: column;
+                padding-bottom: 10px;
+                position: relative;
+            }
+
+            @media all and (min-width: 700px) {
+                body> .piccontent-bg> .piccontent {
+                    width: 520px;
+                    left: 50%;
+                    margin-left: -260px;
+                    height: 60%;
+                    top: 20%;
+                }
+            }
+
+            body> .piccontent-bg> .piccontent .close-icon {
+                position: absolute;
+                right: 4px;
+                top: 4px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv {
+                height: 80px;
+                display: flex;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-top: 20px;
+            }
+
+            @media all and (min-width: 700px) {
+                body> .piccontent-bg> .piccontent> .icondiv {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft {
+                flex: 1;
+                -webkit-box-flex: 1;
+                -moz-box-flex: 1;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft dd,
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft dt {
+                float: left;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft dt {
+                margin-right: 10px;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft dt img {
+                width: 64px;
+                height: 64px;
+                cursor: pointer;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft dd {
+                font-size: 10px;
+                color: #999;
+                line-height: 20px;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivleft dd h3 {
+                font-size: 14px;
+                color: #555;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivright {
+                width: 90px;
+            }
+
+            body> .piccontent-bg> .piccontent> .icondiv> .icondivright> span {
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                border-radius: 15px;
+                display: block;
+                width: 100%;
+                background: #42b8fc;
+                font-size: 12px;
+                color: #f4f5f7;
+                margin-top: 15px;
+                cursor: pointer;
+            }
+
+            body> .piccontent-bg> .piccontent> .section {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 10px;
+                flex: 1;
+                -webkit-box-flex: 1;
+                -moz-box-flex: 1;
+                overflow: auto;
+            }
+
+            @media all and (min-width: 700px) {
+                body> .piccontent-bg> .piccontent> .section {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+
+            body> .piccontent-bg> .piccontent> .section img {
+                width: 100%;
+            }
+
+            body> .piccontent-bg> .piccontent .text {
+                font-size: 12px;
+                color: #888;
+                padding-left: 10px;
+                padding-right: 10px;
+                line-height: 1.5;
+                margin-top: 10px;
+            }
+            .appname li .des span a{
+                display:block;
+                height:100%;
+                width:100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            YunOS for Work 应用下载
+        </div>
+        <ul class="appname">
+            <li>
+                <div class="pic">
+                    <img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yux.png" />
+                </div>
+                <div class="des">
+                    <p>预习王</p>
+                    <span><a href="http://dl.django.t.taobao.com/rest/1.0/file?fileIds=qAuVnibeQxe2nRwaDih9ywAAAB8AAQQD&name=yuxiwang.ypp" id="link0" >下载</a></span>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/xuek.png" />
+                </div>
+                <div class="des">
+                    <p>学课</p>
+                    <span><a href="http://dl.django.t.taobao.com/rest/1.0/file?fileIds=KuAqSe-xQEWfgUuFme4VtQAAAB8AAQQD&name=winupon_xueke.ypp" id="link1" >下载</a></span>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/axue.png" />
+                </div>
+                <div class="des">
+                    <p>爱学课堂</p>
+                    <span><a href="http://dl.django.t.taobao.com/rest/1.0/file?fileIds=CXKXTaGtRSGuw_UqoGNGLgAAAB8AAQQD&name=officeSuite.ypp" id="link2">下载</a></span>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yiqixue.png" />
+                </div>
+                <div class="des">
+                    <p>一起学</p>
+                    <span><a href="http://dl.django.t.taobao.com/rest/1.0/file?fileIds=ptV8Yv-RTaeTezevG5PuPQAAAB8AAQQD&name=etiantian.ypp" id="link3">下载</a></span>
+                </div>
+            </li>
+            <li>
+                <div class="pic">
+                    <img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/kechengb.png" />
+                </div>
+                <div class="des">
+                    <p>课程表</p>
+                    <span><a href="http://dl.django.t.taobao.com/rest/1.0/file?fileIds=ODsTVMFETiygDELpGmrvhQAAAB8AAQQD&name=http://dl.django.t.taobao.com/rest/1.0/file?fileIds=ODsTVMFETiygDELpGmrvhQAAAB8AAQQD&name=courseSchedule.ypp"  id="link4">下载</a></span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="down-alert">
+            <div class="down-content">
+                <p>应用开始下载，请到通知中心查看</p>
+                <span>确定</span>
+            </div>
+        </div>
+        <div class="piccontent-bg">
+
+            <div class="piccontent">
+                <span class="close-icon">×</span>
+                <div class="icondiv">
+                    <div class="icondivleft">
+                        <dl>
+                            <dt><img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/axue.png" /></dt>
+                            <dd>
+                                <h3>爱学课堂</h3>
+                                <p>淘宝中国</p>
+                                <p>2016年10月30日</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="icondivright">
+                        <span>下载应用</span>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao1.jpg"></div>
+                            <div class="swiper-slide"><img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao2.jpg"></div>
+                            <div class="swiper-slide"><img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao3.jpg"></div>
+                            <div class="swiper-slide"><img src="http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao4.jpg"></div>
+
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                    </div>
+                    <div class="text">
+                        【软件简介】手机淘宝(Android版)是阿里巴巴专为Android手机用户推出的满足其生活消费和线上购物需求的软件，具有查看附近的生活优惠信息、商品搜索、浏览、购买、支付、收藏、物流查询、旺旺沟通等在线功能，成为了用户方便快捷的生活消费入口。Android 2.x 用户，请移步 http://m.taobao.com 下载手机淘宝。
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </body>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>
+    <script type="text/javascript">
+        //设置ul 的宽度
+        var data = {
+            "message": "success",
+            "data": [{
+                "id": 1,
+                "title": "预习王",
+                "des": "学习类",
+                "time": "2016年10月30日",
+                "img": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yux.png",
+                "imgarr": [{
+                        "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yi1.png"
+                    }, {
+                        "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yi2.png"
+                    }, {
+                        "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yi3.png"
+                    }
+
+                ],
+                "content": "预习王是yunos为hp制作的一款基于yunos系统的app。"
+            }, {
+                "id": 2,
+                "title": "学课",
+                "des": "学习类",
+                "time": "2016年11月30日",
+                "img": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/xuek.png",
+                "imgarr": [{
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/pan1.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/pan2.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/pan3.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/pan4.jpg"
+                }],
+                "content": "学课是yunos为hp制作的一款基于yunos系统的app。"
+            }, {
+                "id": 3,
+                "title": "爱学课堂",
+                "des": "学习类",
+                "time": "2016年12月30日",
+                "img": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/axue.png",
+                "imgarr": [{
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao1.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao2.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao3.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao4.jpg"
+                }],
+                "content": "爱学课堂是yunos为hp制作的一款基于yunos系统的app。"
+            }, {
+                "id": 4,
+                "title": "一起学",
+                "des": "学习类",
+                "time": "2016年02月30日",
+                "img": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/yiqixue.png",
+                "imgarr": [{
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao1.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao2.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao3.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao4.jpg"
+                }],
+                "content": "一起学是yunos为hp制作的一款基于yunos系统的app。"
+            }, {
+                "id": 5,
+                "title": "课程表",
+                "des": "学习类",
+                "time": "2016年03月30日",
+                "img": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/kechengb.png",
+                "imgarr": [{
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao1.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao2.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao3.jpg"
+                }, {
+                    "pic": "http://g.alicdn.com/yunos_bbs/bbsh5client/1.0.5/image/down/taobao4.jpg"
+                }],
+                "content": "课程表是yunos为hp制作的一款基于yunos系统的app。"
+            }]
+
+        }
+        var datas = data;
+        $("ul>li>.des>span").on("click", function() {
+            var index=$(this).parent().parent().index();
+            console.log(index);
+            $(".down-alert").show();
+        })
+        $(".down-alert>.down-content>span").on("click", function() {
+
+            $(".down-alert").hide();
+        })
+        $(".appname>li>.pic").on("click", function() {
+            $(".piccontent-bg").show();
+            //换图
+            //获取当前的序号
+            var str = '';
+            var index = $(this).parent().index();
+            var content = datas.data[index];
+            $(".icondivleft dd h3").html(content.title);
+            $(".icondivleft dd p").eq(0).html(content.des);
+            $(".icondivleft dd p").eq(1).html(content.time);
+            $(".icondivleft dt img").attr("src", content.img);
+            $(".text").html(content.content);
+            for(var i = 0; i < content.imgarr.length; i++) {
+                str += '<div class="swiper-slide"><img src=' + content.imgarr[i].pic + ' /></div>'
+            }
+            $(".swiper-wrapper").html(str);
+
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                centeredSlides: false,
+                paginationClickable: true,
+                spaceBetween: 20,
+                grabCursor: true,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+            $(".icondivright>span").on("click", function() {
+
+                $("#link"+index)[0].click();
+                $(".piccontent-bg").hide();
+                $(".down-alert").show();
+            })
+
+        })
+        $(".piccontent-bg .close-icon").on("click", function() {
+            $(".piccontent-bg").hide();
+        })
+
+    </script>
+
+</html>
