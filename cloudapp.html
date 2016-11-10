@@ -333,7 +333,7 @@
                 </div>
                 <div class="des">
                     <p>学课</p>
-                    <span><a href="#" id="link1" >下载</a></span>
+                    <span><a href="#" target="_blank" id="link1" >下载</a></span>
                 </div>
             </li>
             <li>
@@ -505,9 +505,11 @@
         $("ul>li>.des>span").on("click", function() {
             var index=$(this).parent().parent().index();
             console.log(index);
-            $(".down-alert").show();
+            //$(".down-alert").show();
             if (index == 1) {
+                alert(index);
                 window.location.href = "http://dl.django.t.taobao.com/rest/1.0/file?fileIds=KuAqSe-xQEWfgUuFme4VtQAAAB8AAQQD&name=winupon_xueke.ypp";
+                alert(2);  
             }
         })
         $(".down-alert>.down-content>span").on("click", function() {
