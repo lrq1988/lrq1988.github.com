@@ -22,8 +22,12 @@
       <a href="#" onclick="change3();">点我，打开设置，我是caf写法</a>
     </li>
     <li> 
-      <a href="#" onclick="changeService();">点我，测试appdownload下载， </a>
+      <a href="#" onclick="changeService();">点我，测试appdownload下载，打开 page://appdownloader.yunos.com/service </a>
     </li>
+        <li> 
+      <a href="#" onclick="changeService();">点我，测试appdownload下载，打开 page://downloaderservice.yunos.com/service </a>
+    </li>
+    
   </ul>
 
 </body>
@@ -60,6 +64,20 @@
       console.log("lrq-changed-5");
     }
     function changeService() {
+         console.log("lrq-changed");
+      var page = require("core/pageapi/PageImpl").getInstance();
+      console.log("lrq-changed1");
+      var PageLink = require("yunos/page/PageLink");
+      console.log("lrq-changed2");
+      var link = new PageLink("page://appdownloader.yunos.com/service");
+      console.log("lrq-changed3");
+      link.data = "{\"_uri\":\"http://vodcdn.video.taobao.com/oss/ali-video/3536edc0480d4eacb2a3718a452702ce/1453047226/video.mp4\", \"_title\":\"test\"}";
+      console.log("lrq-changed4");
+      page.sendLink(link);
+      console.log("lrq-changed5");
+    }
+    
+    function downloaderservice() {
          console.log("lrq-changed");
       var page = require("core/pageapi/PageImpl").getInstance();
       console.log("lrq-changed1");
